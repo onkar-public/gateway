@@ -1,0 +1,34 @@
+zuul:
+  sensitiveHeaders: Cookie,Set-Cookie
+  ignoredServices: '*'
+
+---
+security:
+  oauth2:
+    resource:
+      jwt:
+        key-value: pleaseChangeThisSecretForANewOne
+
+---
+eureka:
+  client:
+    enabled: true
+    registration:
+      enabled: true
+      defaultZone: "${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"
+---
+hystrix:
+  metrics:
+    enabled: true
+---
+management:
+  endpoint:
+    hystrix:
+      stream:
+        enabled: true
+---
+management:
+  metrics:
+    binders:
+      hystrix:
+        enabled: true
