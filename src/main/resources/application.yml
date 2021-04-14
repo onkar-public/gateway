@@ -1,34 +1,38 @@
-zuul:
-  sensitiveHeaders: Cookie,Set-Cookie
-  ignoredServices: '*'
+server:
+  port: 8080
 
----
-security:
-  oauth2:
-    resource:
-      jwt:
-        key-value: pleaseChangeThisSecretForANewOne
-
----
-eureka:
-  client:
-    enabled: true
-    registration:
-      enabled: true
-      defaultZone: "${EUREKA_HOST:localhost}:${EUREKA_PORT:8761}"
----
 hystrix:
-  metrics:
-    enabled: true
----
-management:
-  endpoint:
-    hystrix:
-      stream:
-        enabled: true
----
-management:
-  metrics:
-    binders:
-      hystrix:
-        enabled: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000 
+
+ribbon:  
+  ReadTimeout: 60000  
+  ConnectTimeout: 60000  
+  eureka:
+    enabled: false
+
+zuul:
+  host: 
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+  routes:
+    users:
+      path: /users/**
+      sensitiveHeaders:
+      url: http://localhost:8081/api
+    profiles:
+      path: /profiles/**
+      sensitiveHeaders:
+      url: http://localhost:8082/api
+    journals:
+      path: /journals/**
+      sensitiveHeaders:
+      url: http://localhost:8083/api
+
+spring:
+  application:
+    name: zuul-server
