@@ -2,11 +2,9 @@ version: '3.4'
 
 services:
   gateway:
-    image: digishaala/gateway
-    container_name: digishaala-gateway
+    image: 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway
+    container_name: teamteach-gateway
     build:
       context: .
       dockerfile: ./Dockerfile
-    ports:
-      - "0.0.0.0:6000:6000"
     network_mode: host
