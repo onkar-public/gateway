@@ -17,7 +17,7 @@ pipeline {
 
         stage('Pull and Run (ssh to ec2)') {
             steps {
-                sh 'ssh ec2-user@ms.digisherpa.ai \'$(aws ecr get-login --no-include-email --region ap-south-1) ; docker pull 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway:latest;/usr/bin/docker-compose -f docker-compose.yml up -d \''
+                sh 'ssh ec2-user@ms.digisherpa.ai \'$(aws ecr get-login --no-include-email --region ap-south-1) ; docker pull 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway:latest;docker run --net=host -d --name teamteach-gateway 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway:latest \''
             }
         }
 
