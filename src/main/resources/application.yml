@@ -23,15 +23,15 @@ zuul:
     users:
       path: /users/**
       sensitiveHeaders:
-      url: http://localhost:8081/api
+      url: http://localhost:8081
     profiles:
       path: /profiles/**
       sensitiveHeaders:
-      url: http://localhost:8082/api
+      url: http://localhost:8082
     journals:
       path: /journals/**
       sensitiveHeaders:
-      url: http://localhost:8083/api
+      url: http://localhost:8083
 
 spring:
   application:
