@@ -23,13 +23,22 @@ zuul:
     users:
       path: /users/**
       sensitiveHeaders:
-      url: http://localhost:8081
+      url: http://localhost:8081/users
     profiles:
       path: /profiles/**
       sensitiveHeaders:
-      url: http://localhost:8082
+      url: http://localhost:8082/profiles
     journals:
       path: /journals/**
+      sensitiveHeaders:
+      url: http://localhost:8083/journals
+    users-docs:
+      sensitiveHeaders:
+      url: http://localhost:8081
+    profiles-docs:
+      sensitiveHeaders:
+      url: http://localhost:8082
+    journals-docs:
       sensitiveHeaders:
       url: http://localhost:8083
 
