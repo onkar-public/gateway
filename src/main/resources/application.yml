@@ -32,6 +32,10 @@ zuul:
       path: /journals/**
       sensitiveHeaders:
       url: http://localhost:8083/journals
+    files:
+      path: /files/**
+      sensitiveHeaders:
+      url: http://localhost:8084/files
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
