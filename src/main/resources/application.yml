@@ -35,7 +35,7 @@ zuul:
     files:
       path: /files/**
       sensitiveHeaders:
-      url: http://localhost:8084/files
+      url: http://localhost:8085/files
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
