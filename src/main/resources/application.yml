@@ -36,6 +36,10 @@ zuul:
       path: /files/**
       sensitiveHeaders:
       url: http://localhost:8085/files
+    recommendations:
+      path: /recommendations/**
+      sensitiveHeaders:
+      url: http://localhost:8086/recommendations
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
@@ -45,6 +49,9 @@ zuul:
     journals-docs:
       sensitiveHeaders:
       url: http://localhost:8083
+    recommendations-docs:
+      sensitiveHeaders:
+      url: http://localhost:8086
 
 spring:
   application:

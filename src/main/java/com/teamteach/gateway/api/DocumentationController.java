@@ -21,6 +21,7 @@ public class DocumentationController implements SwaggerResourcesProvider {
                 resources.add(swaggerResource("users-docs", "/users-docs/v2/api-docs", "2.0"));
                 resources.add(swaggerResource("profiles-docs", "/profiles-docs/v2/api-docs", "2.0"));
                 resources.add(swaggerResource("journals-docs", "/journals-docs/v2/api-docs", "2.0"));
+                resources.add(swaggerResource("recommendations-docs", "/recommendations-docs/v2/api-docs", "2.0"));
                 return resources;
         }
 
