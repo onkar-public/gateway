@@ -20,6 +20,5 @@ pipeline {
                 sh 'ssh ec2-user@ms.digisherpa.ai \'$(aws ecr get-login --no-include-email --region ap-south-1) ; docker pull 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway:latest; docker stop teamteach-gateway ; docker rm teamteach-gateway; docker run --net=host -d --name teamteach-gateway 333490196116.dkr.ecr.ap-south-1.amazonaws.com/teamteach-gateway:latest \''
             }
         }
-
     }
 }
