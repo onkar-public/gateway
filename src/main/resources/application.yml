@@ -40,6 +40,10 @@ zuul:
       path: /recommendations/**
       sensitiveHeaders:
       url: http://localhost:8086/recommendations
+    learnings:
+      path: /learnings/**
+      sensitiveHeaders:
+      url: http://localhost:8087/learnings
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
@@ -52,6 +56,9 @@ zuul:
     recommendations-docs:
       sensitiveHeaders:
       url: http://localhost:8086
+    learnings-docs:
+      sensitiveHeaders:
+      url: http://localhost:8087
 
 spring:
   application:
