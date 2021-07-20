@@ -32,6 +32,10 @@ zuul:
       path: /journals/**
       sensitiveHeaders:
       url: http://localhost:8083/journals
+    notifications:
+      path: /notifications/**
+      sensitiveHeaders:
+      url: http://localhost:8084/notifications
     files:
       path: /files/**
       sensitiveHeaders:
@@ -53,6 +57,9 @@ zuul:
     journals-docs:
       sensitiveHeaders:
       url: http://localhost:8083
+    notifications-docs:
+      sensitiveHeaders:
+      url: http://localhost:8084
     recommendations-docs:
       sensitiveHeaders:
       url: http://localhost:8086
