@@ -48,6 +48,10 @@ zuul:
       path: /learnings/**
       sensitiveHeaders:
       url: http://localhost:8087/learnings
+    content:
+      path: /content/**
+      sensitiveHeaders:
+      url: http://localhost:8088/content
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
