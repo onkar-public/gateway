@@ -52,6 +52,10 @@ zuul:
       path: /content/**
       sensitiveHeaders:
       url: http://localhost:8088/content
+    jobs:
+      path: /jobs/**
+      sensitiveHeaders:
+      url: http://localhost:8089/jobs
     users-docs:
       sensitiveHeaders:
       url: http://localhost:8081
