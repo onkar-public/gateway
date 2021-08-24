@@ -5,7 +5,7 @@ pipeline {
         REPO = "333490196116.dkr.ecr.ap-south-1.amazonaws.com"
         PROJECT = "teamteach-gateway"
         USER = "ec2-user"
-        DOMAIN = "digishaala.com"
+        DOMAIN = "myfamilycoach.ml"
     }
     
     stages{
