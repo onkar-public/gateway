@@ -49,9 +49,9 @@ zuul:
       sensitiveHeaders:
       url: http://localhost:8087/learnings
     content:
-      path: /v1/**
+      path: /cms/**
       sensitiveHeaders:
-      url: http://localhost:8088/v1
+      url: http://localhost:8088/cms
     jobs:
       path: /jobs/**
       sensitiveHeaders:
