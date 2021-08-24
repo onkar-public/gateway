@@ -27,14 +27,13 @@ pipeline {
                 sh 'echo \'$(aws ecr get-login --no-include-email --region ap-south-1)\' > ${GIT_BRANCH}.sh'
                 sh 'echo docker pull $REPO/$PROJECT:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
                 sh 'echo docker rm -f $PROJECT >> ${GIT_BRANCH}.sh'
-                sh 'echo docker run -p 8080:8080 -d --name $PROJECT $REPO/$PROJECT:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
-                sh 'cat ${GIT_BRANCH}.sh | ssh ${USER}@$GIT_BRANCH.$DOMAIN' 
+                sh 'echo docker run -p 8081:8081 -d --name $PROJECT $REPO/$PROJECT:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
+                sh 'cat ${GIT_BRANCH}.sh | ssh ${USER}@${GIT_BRANCH}.$DOMAIN' 
             }
         }
         stage('Cleanup') {
-            when { branch 'dev' }
             steps {
-                sh 'ssh ${USER}@$GIT_BRANCH.$DOMAIN \'$(aws ecr get-login --no-include-email --region ap-south-1) ; docker image prune -a \''
+                sh 'ssh ${USER}@${GIT_BRANCH}.$DOMAIN \'$(aws ecr get-login --no-include-email --region ap-south-1) ; docker image prune -a \''
             }
         }
     }
