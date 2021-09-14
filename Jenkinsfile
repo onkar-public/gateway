@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Push to ECR') {
             steps {
+                sh 'docker images'
                 sh 'docker tag ${PROJECT}:${GIT_BRANCH} ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}'
                 sh '$(aws ecr get-login --no-include-email --region ap-south-1)'
                 sh "docker push ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}"
