@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'docker tag ${PROJECT}:${GIT_BRANCH} ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}'
                 sh '$(aws ecr get-login --no-include-email --region ap-south-1)'
-                sh "docker push ${REPO}/${PROJECT}:${GIT_BRANCH}"
+                sh "docker push ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}"
             }
         }
         stage('Pull & Run') {
