@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        PROJECT = "teamteach-files"
+        PROJECT = "teamteach-gateway"
         USER = "ec2-user"
         REGION = "$REGION"
         ECR_LOGIN = "aws ecr get-login --no-include-email --region $REGION"
