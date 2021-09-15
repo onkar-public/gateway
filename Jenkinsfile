@@ -4,7 +4,6 @@ pipeline {
     environment {
         PROJECT = "teamteach-gateway"
         USER = "ec2-user"
-        REGION = "$REGION"
         ECR_LOGIN = "aws ecr get-login --no-include-email --region $REGION"
     }
     
@@ -25,7 +24,7 @@ pipeline {
                 expression { env.GIT_BRANCH == env.BRANCH_TWO }
             } }
             steps {
-                sh 'docker images'
+                sh 'docker images | grep ${PROJECT}:${GIT_BRANCH}'
                 sh 'docker tag ${PROJECT}:${GIT_BRANCH} ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}'
                 sh '$($ECR_LOGIN)'
                 sh "docker push ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}"
