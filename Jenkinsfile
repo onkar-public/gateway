@@ -28,9 +28,9 @@ pipeline {
                 expression { env.GIT_BRANCH == env.BRANCH_TWO }
             } }
             steps {
-                sh 'docker tag ${PROJECT}:${GIT_BRANCH} ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}'
+                sh 'docker tag ${PROJECT}:${GIT_BRANCH} ${REPO}:${GIT_BRANCH}'
                 sh '$($ECR_LOGIN)'
-                sh "docker push ${AWS_REPO}/${PROJECT}:${GIT_BRANCH}"
+                sh "docker push ${REPO}:${GIT_BRANCH}"
             }
         }
         stage('Pull & Run') {
@@ -40,9 +40,9 @@ pipeline {
             } }
             steps {
                 sh 'echo \$(${ECR_LOGIN}) > ${GIT_BRANCH}.sh'
-                sh 'echo docker pull $AWS_REPO/$PROJECT:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
+                sh 'echo docker pull $REPO:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
                 sh 'echo docker rm -f $PROJECT >> ${GIT_BRANCH}.sh'
-                sh 'echo docker run -e TZ=$TIMEZONE --net=host -p 8080:8080 -d --name $PROJECT $AWS_REPO/$PROJECT:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
+                sh 'echo docker run -e TZ=$TIMEZONE --net=host -p 8080:8080 -d --name $PROJECT $REPO:$GIT_BRANCH >> ${GIT_BRANCH}.sh'
                 sh 'cat ${GIT_BRANCH}.sh | ssh ${USER}@${GIT_BRANCH}.$MS_DOMAIN' 
             }
         }
