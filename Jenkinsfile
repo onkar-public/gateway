@@ -5,6 +5,9 @@ pipeline {
         PROJECT = "teamteach-gateway"
         USER = "ec2-user"
         ECR_LOGIN = "aws ecr get-login --no-include-email --region $REGION"
+        AWS_ACCOUNT = sh(script: 'aws sts get-caller-identity --query Account --output text', , returnStdout: true).trim()
+        AWS_REGION = ish(script: 'aws configure get region', , returnStdout: true).trim()
+        REPO = "$AWS_ACCOUNT.dkr.ecr.$AWS_REGION.amazonaws.com"
     }
     
     stages{
@@ -14,6 +17,7 @@ pipeline {
                 expression { env.GIT_BRANCH == env.BRANCH_TWO }
             } }
             steps {
+                sh 'echo $REPO'
                 sh 'echo $GIT_BRANCH'
                 sh "mvn install -Ddocker -Dbranch=${GIT_BRANCH}"
             }
